@@ -1,6 +1,7 @@
 package blackjack_game;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game {
 
@@ -37,6 +38,48 @@ public class Game {
     public void setDeckId(String deckId) {
         this.deckId = deckId;
     }
+
+    public void initialDeal() throws InterruptedException {
+        System.out.println("PLAYER: " + player.drawCard(dealer.dealCard(getDeckId())));
+        Thread.sleep(1000);
+        System.out.println("DEALER: " + dealer.drawCard(dealer.dealCard(getDeckId())));
+        Thread.sleep(1000);
+        System.out.println("PLAYER: " + player.drawCard(dealer.dealCard(getDeckId())));
+        Thread.sleep(1000);
+        System.out.println("DEALER: " + dealer.drawCard(dealer.dealCard(getDeckId())));
+    }
+
+
+
+    public void determineBlackJack() {
+        if (player.getHand().calculateHandValue() == 21 && dealer.getHand().calculateHandValue() == 21) {
+            System.out.println("WOW! Game tied with blackjack");
+            System.exit(0);
+        } else if (player.getHand().calculateHandValue() == 21) {
+            System.out.println("Blackjack! You win!");
+            System.exit(0);
+        } else if (dealer.getHand().calculateHandValue() == 21) {
+            System.out.println("Commiserations.. You lose" );
+            System.exit(0);
+        }
+    }
+
+
+    public void bothStuckDetermineWinner() {
+        if (player.getHand().calculateHandValue() > dealer.getHand().calculateHandValue()) {
+            System.out.println("Congrats! You win" );
+            System.exit(0);
+        } else if (dealer.getHand().calculateHandValue() > player.getHand().calculateHandValue()) {
+            System.out.println("Commiserations.. You lose" );
+            System.exit(0);
+        } else {
+            System.out.println("Game tied on " +  String.valueOf(player.getHand().calculateHandValue()));
+            System.exit(0);
+        }
+    }
+
+
+
 
 
 }

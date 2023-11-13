@@ -28,7 +28,7 @@ public class Dealer extends Player {
 
         Response response =
 
-                given().log().all().pathParam("deckId", deckId).
+                given().pathParam("deckId", deckId).
                 when().
                 get("https://www.deckofcardsapi.com/api/deck/{deckId}/draw/?count=1");
 
