@@ -5,6 +5,8 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
@@ -47,6 +49,23 @@ public class TestClassOne {
                 then().
                 assertThat().body("cards", hasSize(2));
     }
+
+
+//    @Test
+//    public void canDealToMultiplePlayers() throws InterruptedException {
+//        Player player1 = new Player("Ben");
+//        Player player2 = new Player("Bob");
+//        ArrayList<Player> players = new ArrayList<>();
+//        players.add(player1);
+//        players.add(player2);
+//
+//
+//        Dealer dealer = new Dealer("Dealer");
+//        Game game = new Game(dealer, players);
+//
+//        game.setDeckId(dealer.shufflesCards());
+//        game.initialDeal();
+//    }
 
 
 

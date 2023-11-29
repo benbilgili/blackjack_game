@@ -17,13 +17,27 @@ public class Hand {
         this.cards = cards;
     }
 
+    public int numOfAces;
+
     public void addToHand(Card card) {
         this.cards.add(card);
+
+        // Increment numOfAces only if the added card is an ACE
+        if ("ACE".equals(card.getValue())) {
+            numOfAces++;
+        }
+    }
+
+    public int getNumOfAces() {
+        return numOfAces;
+    }
+
+    public void setNumOfAces(int numOfAces) {
+        this.numOfAces = numOfAces;
     }
 
     public int calculateHandValue() {
         int handValue = 0;
-        int numberOfAces = 0;
 
         for (Card card : cards) {
             String value = card.getValue();
@@ -31,14 +45,13 @@ public class Hand {
             if ("KING".equals(value) || "QUEEN".equals(value) || "JACK".equals(value)) {
                 handValue += 10;
             } else if ("ACE".equals(value)) {
-                numberOfAces++;
-                // Ace will be determined later
+                // do nothing
             } else {
                 handValue += Integer.parseInt(value);
             }
         }
 
-        for (int i = 0; i < numberOfAces; i++) {
+        for (int i = 0; i < numOfAces; i++) {
             if (handValue + 11 <= 21) {
                 handValue += 11;
             } else {

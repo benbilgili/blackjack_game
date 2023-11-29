@@ -38,9 +38,14 @@ public class Dealer extends Player {
     }
 
     public Boolean takeTurn() {
-        System.out.println(getHand().calculateHandValue());
-        return getHand().calculateHandValue() <= 16;
-    }
+//        System.out.println(getHand().calculateHandValue());
+        if (getHand().calculateHandValue() == 17 && getHand().getNumOfAces() == 1 ) { // haven't tested this! They hit on a soft 17 - they might hit if they have 17 and two aces..
+            return true;
+        } else {
+            return getHand().calculateHandValue() <= 16;
+        }
+        // need a check to see the number of aces the dealer has. (if total = 17 and numOfAces > 0, deal hits - return true? )
 
+    }
 
 }

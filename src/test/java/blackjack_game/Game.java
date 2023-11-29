@@ -40,13 +40,28 @@ public class Game {
     }
 
     public void initialDeal() throws InterruptedException {
-        System.out.println("PLAYER: " + player.drawCard(dealer.dealCard(getDeckId())));
+//        System.out.println("PLAYER: " + player.drawCard(dealer.dealCard(getDeckId())));
+//        Thread.sleep(1000);
+//        System.out.println("DEALER: " + dealer.drawCard(dealer.dealCard(getDeckId())));
+//        Thread.sleep(1000);
+//        System.out.println("PLAYER: " + player.drawCard(dealer.dealCard(getDeckId())));
+//        Thread.sleep(1000);
+//        System.out.println("DEALER: " + dealer.drawCard(dealer.dealCard(getDeckId())));
+        System.out.println("PLAYER DRAWS CARD");
+        player.drawCard(dealer.dealCard(getDeckId()));
         Thread.sleep(1000);
-        System.out.println("DEALER: " + dealer.drawCard(dealer.dealCard(getDeckId())));
+
+        System.out.println("DEALER DRAWS CARD");
+        dealer.drawCard(dealer.dealCard(getDeckId()));
         Thread.sleep(1000);
-        System.out.println("PLAYER: " + player.drawCard(dealer.dealCard(getDeckId())));
+
+        System.out.println("PLAYER DRAWS CARD");
+        player.drawCard(dealer.dealCard(getDeckId()));
         Thread.sleep(1000);
-        System.out.println("DEALER: " + dealer.drawCard(dealer.dealCard(getDeckId())));
+
+        System.out.println("DEALER DRAWS CARD");
+        System.out.println("DEALER HAS " + dealer.drawCard(dealer.dealCard(getDeckId())));
+        Thread.sleep(1000);
     }
 
 
@@ -59,7 +74,7 @@ public class Game {
             System.out.println("Blackjack! You win!");
             System.exit(0);
         } else if (dealer.getHand().calculateHandValue() == 21) {
-            System.out.println("Commiserations.. You lose" );
+            System.out.println("Dealer Blackjack. You lose..." );
             System.exit(0);
         }
     }

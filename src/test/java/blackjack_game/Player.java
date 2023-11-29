@@ -9,6 +9,8 @@ public class Player {
     private Boolean isBust;
     private Boolean hasStuck;
 
+    // private int funds;
+
     public Player() {
         this.hand = new Hand();
         this.isBust = false;
@@ -17,6 +19,10 @@ public class Player {
 
     public Hand getHand() {
         return hand;
+    }
+
+    public int getHandLength() {
+        return hand.getCards().size();
     }
 
     public void setHand(Hand hand) {

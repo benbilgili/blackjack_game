@@ -48,6 +48,7 @@ public class PlayBlackjack {
                 if (dealerDecision) {
                     System.out.println("DEALER: " + dealer.drawCard(dealer.dealCard(game.getDeckId())));
                     if (dealer.getHand().calculateHandValue() > 21) {
+                        System.out.println("Dealer Bust!");
                         System.out.println("Congrats! You win on " + String.valueOf(player.getHand().calculateHandValue()) );
                         System.exit(0);
                     }
@@ -58,6 +59,7 @@ public class PlayBlackjack {
 
             // If both players have stuck, determine the winner and exit game
             if (dealer.getHasStuck() && player.getHasStuck()) {
+                System.out.println("Dealer Sticks");
                 game.bothStuckDetermineWinner();
             }
         }
