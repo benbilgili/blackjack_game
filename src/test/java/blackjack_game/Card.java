@@ -32,9 +32,15 @@ public class Card {
     }
 
     public static Card fromApiResponse(Map<String, Object> apiResponse) {
-        Map<String, Object> cardData = ((List<Map<String, Object>>) apiResponse.get("cards")).get(0);
-        String value = (String) cardData.get("value");
-        String suit = (String) cardData.get("suit");
-        return new Card(value, suit);
+        List<Map<String, Object>> cards = (List<Map<String, Object>>) apiResponse.get("cards");
+        if (cards != null && !cards.isEmpty()) {
+            Map<String, Object> cardData = cards.get(0);
+            String value = (String) cardData.get("value");
+            String suit = (String) cardData.get("suit");
+            return new Card(value, suit);
+        } else {
+            System.out.println("API Response 'cards': " + cards);
+            throw new RuntimeException("No cards found in API response");
+        }
     }
 }

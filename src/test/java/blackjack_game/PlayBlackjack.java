@@ -19,7 +19,12 @@ public class PlayBlackjack {
         game.initialDeal();
 
         // Check if either player has blackjack
-        game.determineBlackJack();
+        Boolean blackjack = game.determineBlackJack();
+        if (blackjack) {
+            System.exit(0);
+        }
+
+
 
 
 
@@ -61,6 +66,7 @@ public class PlayBlackjack {
             if (dealer.getHasStuck() && player.getHasStuck()) {
                 System.out.println("Dealer Sticks");
                 game.bothStuckDetermineWinner();
+                System.exit(0);
             }
         }
     }
